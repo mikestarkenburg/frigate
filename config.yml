@@ -1,0 +1,26 @@
+mqtt:
+  host: 192.168.5.119
+  user: mqtt
+  password: REDACTED
+
+cameras:
+  garagecam:
+    ffmpeg:
+      inputs:
+        - path: rtsp://REDACTED:REDACTED@192.168.5.124/img/video.sav
+          roles:
+            - rtmp
+  kidscam:
+    ffmpeg:
+      inputs:
+        - path: rtsp://REDACTED:REDACTED@192.168.5.128/img/video.sav
+          roles:
+            - rtmp
+  frontcam:
+    ffmpeg:
+      inputs:
+        - path: rtsp://REDACTED:REDACTED@192.168.5.126/img/video.sav
+          roles:
+            - rtmp
+
+# for kitchen cam later http://192.168.5.129/media/?action=stream
