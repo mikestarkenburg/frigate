@@ -11,9 +11,10 @@ mqtt:
 
 detectors:
 # UNCOMMENT ME ONCE THE CORAL IS INSTALLED.
-  coral:
-    type: edgetpu
-    device: pci
+#  coral:
+#    type: edgetpu
+#    device: pci
+
 #REMOVE ME ONCE THE CORAL IS INSTALLED.  
   cpu1:
     type: cpu
