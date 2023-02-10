@@ -46,7 +46,7 @@ cameras:
       width: 1280
       height: 720
       fps: 10
- frontcam:
+  frontcam:
     ffmpeg:
       inputs:
         - path: rtsp://REDACTED:REDACTED@192.168.5.126:554/img/media.sav?channel=2
