@@ -60,3 +60,45 @@ cameras:
       width: 640
       height: 480
       fps: 5
+  kidscam:
+    ffmpeg:
+      inputs:
+        - path: rtsp://REDACTED:REDACTED@192.168.5.128:554/img/media.sav?channel=2
+          roles:
+            - detect
+        - path: rtsp://REDACTED:REDACTED@192.168.5.128:554/img/media.sav?channel=1
+          roles:
+            - record
+            - rtmp
+    detect:
+      width: 640
+      height: 480
+      fps: 5
+  diningcam:
+    ffmpeg:
+      inputs:
+        - path: rtsp://REDACTED:REDACTED@192.168.5.127:554/img/media.sav?channel=2
+          roles:
+            - detect
+        - path: rtsp://REDACTED:REDACTED@192.168.5.127:554/img/media.sav?channel=1
+          roles:
+            - record
+            - rtmp
+    detect:
+      width: 640
+      height: 480
+      fps: 5
+  guestcam:
+    ffmpeg:
+      inputs:
+        - path: rtsp://REDACTED:REDACTED@192.168.5.125:554/img/media.sav?channel=2
+          roles:
+            - detect
+        - path: rtsp://REDACTED:REDACTED@192.168.5.125:554/img/media.sav?channel=1
+          roles:
+            - record
+            - rtmp
+    detect:
+      width: 640
+      height: 480
+      fps: 5
