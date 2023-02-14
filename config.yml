@@ -20,9 +20,6 @@ detectors:
     type: cpu
     num_threads: 2
 
-birdseye:
-  enabled: False
-
 #UNCOMMENT ME ONCE WE FIGURE OUT HOW TO PASS THROUGH A GPU 
 #ffmpeg:
 #  hwaccel_args: 
@@ -74,6 +71,9 @@ cameras:
       width: 640
       height: 480
       fps: 5
+    motion:
+      mask: 297,0,640,0,640,242,640,480,267,480,274,227,252,175
+
   diningcam:
     ffmpeg:
       inputs:
