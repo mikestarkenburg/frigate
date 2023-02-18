@@ -8,27 +8,22 @@ mqtt:
   user: mqtt
   password: REDACTED
   stats_interval: 60
-
 detectors:
 # UNCOMMENT ME ONCE THE CORAL IS INSTALLED.
 #  coral:
 #    type: edgetpu
 #    device: pci
-
 #REMOVE ME ONCE THE CORAL IS INSTALLED.  
   cpu1:
     type: cpu
     num_threads: 2
-
 #UNCOMMENT ME ONCE WE FIGURE OUT HOW TO PASS THROUGH A GPU 
 #ffmpeg:
 #  hwaccel_args: 
 #    -hwaccel qsv
 #    -hwaccel_device /dev/dri/renderD128
 #    -hwaccel_output_format yuv420p
-
 cameras:
-
   garagecam:
     ffmpeg:
       inputs:
@@ -43,20 +38,6 @@ cameras:
       width: 1280
       height: 720
       fps: 10
-  frontcam:
-    ffmpeg:
-      inputs:
-        - path: rtsp://REDACTED:REDACTED@192.168.5.126:554/img/media.sav?channel=2
-          roles:
-            - detect
-        - path: rtsp://REDACTED:REDACTED@192.168.5.126:554/img/media.sav?channel=1
-          roles:
-            - record
-            - rtmp
-    detect:
-      width: 640
-      height: 480
-      fps: 5
   kidscam:
     ffmpeg:
       inputs:
@@ -73,32 +54,45 @@ cameras:
       fps: 5
     motion:
       mask: 297,0,640,0,640,242,640,480,267,480,274,227,252,175
-
-  diningcam:
-    ffmpeg:
-      inputs:
-        - path: rtsp://REDACTED:REDACTED@192.168.5.127:554/img/media.sav?channel=2
-          roles:
-            - detect
-        - path: rtsp://REDACTED:REDACTED@192.168.5.127:554/img/media.sav?channel=1
-          roles:
-            - record
-            - rtmp
-    detect:
-      width: 640
-      height: 480
-      fps: 5
-  guestcam:
-    ffmpeg:
-      inputs:
-        - path: rtsp://REDACTED:REDACTED@192.168.5.125:554/img/media.sav?channel=2
-          roles:
-            - detect
-        - path: rtsp://REDACTED:REDACTED@192.168.5.125:554/img/media.sav?channel=1
-          roles:
-            - record
-            - rtmp
-    detect:
-      width: 640
-      height: 480
-      fps: 5
+#  diningcam:
+#    ffmpeg:
+#      inputs:
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.127:554/img/media.sav?channel=2
+#          roles:
+#            - detect
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.127:554/img/media.sav?channel=1
+#          roles:
+#            - record
+#            - rtmp
+#    detect:
+#      width: 640
+#      height: 480
+#      fps: 5
+#  guestcam:
+#    ffmpeg:
+#      inputs:
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.125:554/img/media.sav?channel=2
+#          roles:
+#            - detect
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.125:554/img/media.sav?channel=1
+#          roles:
+#            - record
+#            - rtmp
+#    detect:
+#      width: 640
+#      height: 480
+#      fps: 5
+#  frontcam:
+#    ffmpeg:
+#      inputs:
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.126:554/img/media.sav?channel=2
+#          roles:
+#            - detect
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.126:554/img/media.sav?channel=1
+#          roles:
+#            - record
+#            - rtmp
+#    detect:
+#      width: 640
+#      height: 480
+#      fps: 5
