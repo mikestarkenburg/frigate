@@ -9,14 +9,29 @@ mqtt:
   password: REDACTED
   stats_interval: 60
 detectors:
+
 # UNCOMMENT ME ONCE THE CORAL IS INSTALLED.
 #  coral:
 #    type: edgetpu
 #    device: pci
+
+
 #REMOVE ME ONCE THE CORAL IS INSTALLED.  
   cpu1:
     type: cpu
     num_threads: 2
+
+record:
+  enabled: True
+  retain:
+    days: 2
+    mode: motion
+  events:
+    retain:
+      default: 5
+      mode: active_objects
+
+
 #UNCOMMENT ME ONCE WE FIGURE OUT HOW TO PASS THROUGH A GPU 
 #ffmpeg:
 #  hwaccel_args: 
