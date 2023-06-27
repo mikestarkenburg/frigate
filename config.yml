@@ -1,4 +1,4 @@
-yaml-language-server: $schema=http://192.168.5.152:5000/api/config/schema.json
+# yaml-language-server: $schema=http://192.168.5.152:5000/api/config/schema.json
 
 #    Starkhome Frigate NVR Test Instance
 #    config.yml  for MCP LXC install
@@ -30,12 +30,12 @@ detectors:
 #    -hwaccel_device /dev/dri/renderD128
 #    -hwaccel_output_format yuv420p
 
-objects:
-  track:
-    - person
-    - cat
-    - car
-    - hot dog
+#objects:
+#  track:
+#    - person
+#    - cat
+#    - car
+#    - hot dog
 
 record:
   enabled: True
@@ -52,13 +52,13 @@ record:
 #    kitchencam: http_mjpeg:http://REDACTED:REDACTED@192.168.5.229/media/?action=stream
 
 
-timestamp_style:
-  position: "br"
-  color:
-    red: 030
-    green: 255
-    blue: 030
-  thickness: 3
+#timestamp_style:
+#  position: "br"
+#  color:
+#    red: 030
+#    green: 255
+#    blue: 030
+#  thickness: 3
 
 cameras:
   garageleftcam:
@@ -74,6 +74,7 @@ cameras:
       width: 1280
       height: 720
       fps: 10
+
   kidscam:
     ffmpeg:
       inputs:
