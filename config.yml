@@ -1,5 +1,5 @@
-# yaml-language-server: $schema=http://192.168.5.152:5000/api/config/schema.json
-#
+yaml-language-server: $schema=http://192.168.5.152:5000/api/config/schema.json
+
 #    Starkhome Frigate NVR Test Instance
 #    config.yml  for MCP LXC install
 #    PRE coral, iGPU, network shares
@@ -47,15 +47,9 @@ record:
       default: 10
       mode: active_objects
 
-go2rtc:
-  streams:
-    kitchencam: http_mjpeg:http://REDACTED:REDACTED@192.168.5.229/media/?action=stream
-
-
-
-
-
-
+#go2rtc:
+#  streams:
+#    kitchencam: http_mjpeg:http://REDACTED:REDACTED@192.168.5.229/media/?action=stream
 
 
 timestamp_style:
@@ -65,15 +59,6 @@ timestamp_style:
     green: 255
     blue: 030
   thickness: 3
-
-
-
-
-
-
-
-
-
 
 cameras:
   garageleftcam:
@@ -85,7 +70,6 @@ cameras:
         - path: rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=1
           roles:
             - record
-            - rtmp
     detect:
       width: 1280
       height: 720
@@ -99,41 +83,38 @@ cameras:
         - path: rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=1
           roles:
             - record
-            - rtmp
     detect:
       width: 640
       height: 480
       fps: 5
-    motion:
-      mask: 297,0,640,0,640,242,640,480,267,480,274,227,252,175
-  frontcam:
-    ffmpeg:
-      inputs:
-        - path: rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=2
-          roles:
-            - detect
-        - path: rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=1
-          roles:
-            - record
-            - rtmp
-    detect:
-      width: 640
-      height: 480
-      fps: 5
-  frontwalkcam:
-    ffmpeg:
-      inputs:
-        - path: rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=2
-          roles:
-            - detect
-        - path: rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=1
-          roles:
-            - record
-            - rtmp
-    detect:
-      width: 640
-      height: 480
-      fps: 5
+
+# frontcam:
+#    ffmpeg:
+#      inputs:
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=2
+#          roles:
+#            - detect
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=1
+#          roles:
+#            - record
+#    detect:
+#      width: 640
+#      height: 480
+#      fps: 5
+
+#  frontwalkcam:
+#    ffmpeg:
+#      inputs:
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=2
+#          roles:
+#            - detect
+#        - path: rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=1
+#          roles:
+#            - record
+#    detect:
+#      width: 640
+#      height: 480
+#      fps: 5
 
 #  kitchencam:
 #    ffmpeg:
@@ -142,6 +123,4 @@ cameras:
 #          roles:
 #            - detect
 #            - record
-#  http://REDACTED:REDACTED@192.168.5.229/media/?action=stream
-#
 #
