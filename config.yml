@@ -59,8 +59,8 @@ go2rtc:
     garageleftcam-sub:
     - rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=2
     kitchencam: 
-    - http://REDACTED:REDACTED@192.168.5.229/media/?action=stream
-    - "ffmpeg:back#video=h264"
+    - http_mjpeg:http://REDACTED:REDACTED@192.168.5.229/media/?action=stream
+    - "ffmpeg:kitchencam#video=h264"
 
 #timestamp_style:
 #  position: "br"
@@ -114,7 +114,6 @@ cameras:
     detect:
       width: 1280
       height: 720
-      fps: 25
 
 # frontcam:
 #    ffmpeg:
