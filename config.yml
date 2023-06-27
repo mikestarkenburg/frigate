@@ -1,5 +1,3 @@
-yaml-language-server: $schema=http://192.168.5.152:5000/api/config/schema.json
-
 #    Starkhome Frigate NVR Test Instance
 #    config.yml  for MCP LXC install
 #    PRE coral, iGPU, network shares
@@ -30,12 +28,12 @@ detectors:
 #    -hwaccel_device /dev/dri/renderD128
 #    -hwaccel_output_format yuv420p
 
-objects:
-  track:
-    - person
-    - cat
-    - car
-    - hot dog
+#objects:
+#  track:
+#    - person
+#    - cat
+#    - car
+#    - hot dog
 
 record:
   enabled: True
@@ -47,12 +45,12 @@ record:
       default: 10
       mode: active_objects
 
-go2rtc:
-  streams:
-      kidscam:
-        - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=1
-      kidscam-sub:
-        - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=2
+#go2rtc:
+#  streams:
+#      kidscam:
+#        - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=1
+#      kidscam-sub:
+#        - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=2
 #      kitchencam: 
 #        - http_mjpeg:http://REDACTED:REDACTED@192.168.5.229/media/?action=stream
    
@@ -80,21 +78,21 @@ cameras:
       height: 720
       fps: 10
 
-  kidscam:
-    ffmpeg:
-      inputs:
-        - path: rtsp://127.0.0.1:8554/kidscam-sub
-          input_args: preset-rtsp-restream
-          roles:
-            - detect
-        - path: rtsp://127.0.0.1:8554/kidscam
-          input_args: preset-rtsp-restream
-          roles:
-            - record
-    detect:
-      width: 640
-      height: 480
-      fps: 5
+ # kidscam:
+ #   ffmpeg:
+ #     inputs:
+ #       - path: rtsp://127.0.0.1:8554/kidscam-sub
+ #         input_args: preset-rtsp-restream
+ #         roles:
+ #           - detect
+ #       - path: rtsp://127.0.0.1:8554/kidscam
+ #         input_args: preset-rtsp-restream
+ #         roles:
+ #           - record
+ #   detect:
+ #     width: 640
+ #     height: 480
+ #     fps: 5
 
 # frontcam:
 #    ffmpeg:
