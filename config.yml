@@ -58,8 +58,7 @@ go2rtc:
     - rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=1
     garageleftcam-sub:
     - rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=2
-#    kitchencam: 
-#    - mjpeg: ffmpeg:http://REDACTED:REDACTED@192.168.5.229/media/?action=stream#video=h264
+    kitchencam: "ffmpeg:http://REDACTED:REDACTED@192.168.5.229/media/?action=stream#video=h264"
 
 #timestamp_style:
 #  position: "br"
@@ -103,11 +102,10 @@ cameras:
       fps: 10
 
   kitchencam:
-    enabled: False
+    enabled: True
     ffmpeg:
       inputs:
         - path: rtsp://127.0.0.1:8554/kitchencam
-          input_args: preset-rtsp-restream
           roles:
             - record
 
