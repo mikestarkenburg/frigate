@@ -50,22 +50,23 @@ record:
 go2rtc:
   streams:
     kitchencam: "ffmpeg:http://REDACTED:REDACTED@192.168.5.229/media/?action=stream#video=h264"
-    kidscam:
-    - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=1
-    kidscam-sub:
-    - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=2
     garageleftcam:
     - rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=1
     garageleftcam-sub:
     - rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=2
-    frontgatecam:
-    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=1
-    frontgatecam-sub:
-    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=2  
-    frontwalkcam:
-    - rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=1
-    frontwalkcam-sub:
-    - rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=2
+
+#    kidscam:
+#    - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=1
+#    kidscam-sub:
+#    - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=2
+#    frontgatecam:
+#    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=1
+#    frontgatecam-sub:
+#    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=2  
+#    frontwalkcam:
+#    - rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=1
+#    frontwalkcam-sub:
+#    - rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=2
     
 
 #timestamp_style:
@@ -77,23 +78,6 @@ go2rtc:
 #  thickness: 3
 
 cameras:
-  kidscam:
-    enabled: True
-    ffmpeg:
-      inputs:
-        - path: rtsp://127.0.0.1:8554/kidscam
-          input_args: preset-rtsp-restream
-          roles:
-            - record
-        - path: rtsp://127.0.0.1:8554/kidscam-sub
-          input_args: preset-rtsp-restream
-          roles:
-            - detect
-    detect:                 
-      width: 640
-      height: 480
-      fps: 5
-
   garageleftcam:
     enabled: True
     ffmpeg:
@@ -123,8 +107,25 @@ cameras:
       width: 1280
       height: 720
 
+  kidscam:
+    enabled: False
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/kidscam
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/kidscam-sub
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    detect:                 
+      width: 640
+      height: 480
+      fps: 5
+
   frontgatecam:
-    enabled: True
+    enabled: False
     ffmpeg:
       inputs:
         - path: rtsp://127.0.0.1:8554/frontgatecam
@@ -141,7 +142,7 @@ cameras:
       fps: 5
 
   frontwalkcam:
-    enabled: True
+    enabled: False
     ffmpeg:
       inputs:
         - path: rtsp://127.0.0.1:8554/frontwalkcam
