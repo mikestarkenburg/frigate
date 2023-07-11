@@ -1,10 +1,10 @@
 #yaml-language-server: $schema=http://frigate_host:5000/api/config/schema.json
 
-#    Starkhome Frigate NVR Test Instance
+#    Starkhome Frigate NVR Instance
 #    config.yml for MCP LXC install
 #    PRE coral, iGPU, network shares
 #    POST 1.2 upgrade with go2rtc
-#    2023-06-29a
+#    2023-07-11
 #
 
 mqtt:
@@ -54,29 +54,20 @@ go2rtc:
     - rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=1
     garageleftcam-sub:
     - rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=2
+    frontgatecam:
+    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=1
+    frontgatecam-sub:
+    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=2  
 
 #    kidscam:
 #    - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=1
 #    kidscam-sub:
 #    - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=2
-#    frontgatecam:
-#    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=1
-#    frontgatecam-sub:
-#    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=2  
 #    frontwalkcam:
 #    - rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=1
 #    frontwalkcam-sub:
 #    - rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=2
     
-
-#timestamp_style:
-#  position: "br"
-#  color:
-#    red: 030
-#    green: 255
-#    blue: 030
-#  thickness: 3
-
 cameras:
   garageleftcam:
     enabled: True
@@ -107,25 +98,8 @@ cameras:
       width: 1280
       height: 720
 
-  kidscam:
-    enabled: False
-    ffmpeg:
-      inputs:
-        - path: rtsp://127.0.0.1:8554/kidscam
-          input_args: preset-rtsp-restream
-          roles:
-            - record
-        - path: rtsp://127.0.0.1:8554/kidscam-sub
-          input_args: preset-rtsp-restream
-          roles:
-            - detect
-    detect:                 
-      width: 640
-      height: 480
-      fps: 5
-
   frontgatecam:
-    enabled: False
+    enabled: True
     ffmpeg:
       inputs:
         - path: rtsp://127.0.0.1:8554/frontgatecam
@@ -141,19 +115,36 @@ cameras:
       height: 480
       fps: 5
 
-  frontwalkcam:
-    enabled: False
-    ffmpeg:
-      inputs:
-        - path: rtsp://127.0.0.1:8554/frontwalkcam
-          input_args: preset-rtsp-restream
-          roles:
-            - record
-        - path: rtsp://127.0.0.1:8554/frontwalkcam-sub
-          input_args: preset-rtsp-restream
-          roles:
-            - detect
-    detect:                 
-      width: 640
-      height: 480
-      fps: 5
+#  kidscam:
+#    enabled: False
+#    ffmpeg:
+#      inputs:
+#        - path: rtsp://127.0.0.1:8554/kidscam
+#          input_args: preset-rtsp-restream
+#          roles:
+#            - record
+#        - path: rtsp://127.0.0.1:8554/kidscam-sub
+#          input_args: preset-rtsp-restream
+#          roles:
+#            - detect
+#    detect:                 
+#      width: 640
+#      height: 480
+#      fps: 5
+#
+#  frontwalkcam:
+#    enabled: False
+#    ffmpeg:
+#      inputs:
+#        - path: rtsp://127.0.0.1:8554/frontwalkcam
+#          input_args: preset-rtsp-restream
+#          roles:
+#            - record
+#        - path: rtsp://127.0.0.1:8554/frontwalkcam-sub
+#          input_args: preset-rtsp-restream
+#          roles:
+#            - detect
+#    detect:                 
+#      width: 640
+#      height: 480
+#      fps: 5
