@@ -1,0 +1,144 @@
+#yaml-language-server: $schema=http://frigate_host:5000/api/config/schema.json
+
+#    Starkhome Frigate NVR Instance
+#    config.yml for MCP LXC install
+#    Trying kidscam again
+#    Pre iGPU, network shares
+#    2023-07
+#
+
+mqtt:
+  host: 192.168.5.119
+  user: mqtt
+  password: REDACTED
+
+detectors:
+  coral:
+    type: edgetpu
+    device: pci
+
+
+#UNCOMMENT ME ONCE WE FIGURE OUT HOW TO PASS THROUGH THE iGPU 
+#ffmpeg:
+#  hwaccel_args: 
+#    -hwaccel qsv
+#    -hwaccel_device /dev/dri/renderD128
+#    -hwaccel_output_format yuv420p
+
+objects:
+  track:
+    - person
+    - cat
+    - car
+
+
+record:
+  enabled: True
+  retain:
+    days: 2
+    mode: motion
+  events:
+    retain:
+      default: 10
+      mode: active_objects
+
+go2rtc:
+  streams:
+    kitchencam: "ffmpeg:http://REDACTED:REDACTED@192.168.5.229/media/?action=stream#video=h264"
+    garageleftcam:
+    - rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=1
+    garageleftcam-sub:
+    - rtsp://REDACTED:REDACTED@192.168.5.224:554/img/media.sav?channel=2
+    kidscam:
+    - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=1
+    kidscam-sub:
+    - rtsp://REDACTED:REDACTED@192.168.5.221:554/img/media.sav?channel=2
+    frontwalkcam:
+    - rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=1
+    frontwalkcam-sub:
+    - rtsp://REDACTED:REDACTED@192.168.5.220:554/img/media.sav?channel=2
+#    frontgatecam:
+#    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=1
+#    frontgatecam-sub:
+#    - rtsp://REDACTED:REDACTED@192.168.5.228:554/img/media.sav?channel=2  
+
+cameras:
+  garageleftcam:
+    enabled: True
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/garageleftcam
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/garageleftcam-sub
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    detect:
+      width: 1280
+      height: 720
+      fps: 10
+
+  kitchencam:
+    enabled: True
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/kitchencam
+          roles:
+            - record
+            - detect
+    detect:
+      width: 1280
+      height: 720
+
+  kidscam:
+    enabled: True
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/kidscam
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/kidscam-sub
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    detect:                 
+      width: 640
+      height: 480
+      fps: 5
+      
+  frontwalkcam:
+    enabled: True
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/frontwalkcam
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/frontwalkcam-sub
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    detect:                 
+      width: 640
+      height: 480
+      fps: 5
+
+#  frontgatecam:
+#    enabled: True
+#    ffmpeg:
+#      inputs:
+#        - path: rtsp://127.0.0.1:8554/frontgatecam
+#          input_args: preset-rtsp-restream
+#          roles:
+#            - record
+#        - path: rtsp://127.0.0.1:8554/frontgatecam-sub
+#          input_args: preset-rtsp-restream
+#          roles:
+#            - detect
+#    detect:                 
+#      width: 640
+#      height: 480
+#      fps: 5
